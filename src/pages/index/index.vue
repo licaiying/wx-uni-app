@@ -1,9 +1,9 @@
 <template>
-	<view class="content">
+	<view class="content" :style="{'height':height,'overflow':'hidden'}">
 
 		<!-- 搜索区域 -->
 		<!-- 使用封装好的search组件 -->
-		<search></search>
+		<search @send="send"></search>
 
 		<!-- 轮播图区域 -->
 		<swiper class="swiper">
@@ -133,13 +133,21 @@ import search from '@/components/search.vue'
 	export default {
 		data() {
 			return {
-				
+				// 父组件(首页)的高度默认值，不需要设置高度，自动的
+				height:'auto'
 			}
 		},
 		
     // 注册search组件
 		components:{
 			search
+		},
+
+		methods:{
+			send(e){
+			//   console.log(e)
+			this.height = e
+			}
 		}
 	}
 </script>
